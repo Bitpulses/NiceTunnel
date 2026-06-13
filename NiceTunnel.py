@@ -1,21 +1,21 @@
 """
-    NiceTunnel - A Nice and Elegant SSH Port Forwarding Tool
+NiceTunnel - A Nice and Elegant SSH Port Forwarding Tool
 
-    Supports Local (-L), Remote (-R), and Dynamic/SOCKS5 (-D) forwarding.
+Supports Local (-L), Remote (-R), and Dynamic/SOCKS5 (-D) forwarding.
 
-    Usage:
-        # Local forwarding
-        python NiceTunnel.py -H jumper -u root -L 8080:internal:80
+Usage:
+    # Local forwarding
+    python NiceTunnel.py -H jumper -u root -L 8080:internal:80
 
-        # Remote forwarding
-        python NiceTunnel.py -H jumper -u root -R 13306:localhost:3306
+    # Remote forwarding
+    python NiceTunnel.py -H jumper -u root -R 13306:localhost:3306
 
-        # SOCKS5 proxy
-        python NiceTunnel.py -H jumper -u root -D 1080
+    # SOCKS5 proxy
+    python NiceTunnel.py -H jumper -u root -D 1080
 
-        # Mix all modes
-        python NiceTunnel.py -H jumper -u root \\
-            -L 8080:internal:80 -R 2222:localhost:22 -D 1080
+    # Mix all modes
+    python NiceTunnel.py -H jumper -u root \\
+        -L 8080:internal:80 -R 2222:localhost:22 -D 1080
 """
 
 import logging
