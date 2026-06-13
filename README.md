@@ -1,17 +1,39 @@
 # NiceTunnel
 
-A nice and elegant SSH port forwarding tool.
+A nice and elegant SSH port forwarding tool with GUI.
 
 Forward ports from cluster compute nodes to your local machine via SSH tunnel,
-built on top of [Paramiko](https://www.paramiko.org/).
+built on top of [Paramiko](https://www.paramiko.org/) and [Flet](https://flet.dev/).
 
 ## Installation
 
 ```bash
-pip install paramiko
+pip install paramiko flet
 ```
 
 ## Usage
+
+### GUI Mode (Recommended)
+
+```bash
+python ui.py
+```
+
+A graphical interface will open where you can:
+1. Configure SSH connection settings (host, port, user, key/password)
+2. Add/remove unlimited port forwarding rules
+3. Start/stop tunnels individually or all at once
+4. Monitor connection status and logs in real-time
+
+**Supported forwarding types:**
+
+| Type | Description | Direction |
+|------|-------------|-----------|
+| **Local** | Local port forwarding (-L) | Local → SSH → Remote |
+| **Remote** | Remote port forwarding (-R) | Remote → SSH → Local |
+| **Dynamic** | SOCKS5 proxy (-D) | SOCKS5 → SSH → Any |
+
+### CLI Mode
 
 ```bash
 # Forward port 80 of cluster node 192.168.1.100 to local port 8080
@@ -76,11 +98,14 @@ remote_host:remote_port>local_host:local_port
 
 ## Features
 
-- **Auto-reconnect** — SSH connection drops are detected and recovered automatically.
-- **Multiple tunnels** — Forward as many ports as you need with repeated `-f` flags.
-- **Multiple auth methods** — Private key, password, or SSH agent.
-- **Keepalive** — Prevents idle timeouts with configurable heartbeat interval.
-- **Graceful shutdown** — `Ctrl+C` safely closes all tunnels and the SSH connection.
+- **GUI interface** — Manage tunnels visually with Flet-based UI
+- **All forwarding types** — Local (-L), Remote (-R), and Dynamic/SOCKS5 (-D)
+- **Unlimited tunnels** — Add and run as many forwarding rules as you need simultaneously
+- **Auto-reconnect** — SSH connection drops are detected and recovered automatically
+- **Multiple auth methods** — Private key, password, or SSH agent
+- **Keepalive** — Prevents idle timeouts with configurable heartbeat interval
+- **Real-time logs** — Monitor connection status and tunnel activity in real-time
+- **Graceful shutdown** — Safely closes all tunnels and the SSH connection
 
 ## License
 
